@@ -1,15 +1,23 @@
-#!/usr/bin/ruby
-require 'rubygems'
-require 'sinatra'
 require 'haml'
 require 'dm-core'
 require 'dm-validations'
 
 #
-# Model
+# Configuration
 #
 
-DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/recipes.db")
+configure :development do
+ DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/recipes-dev.db")
+ DataMapper::Logger.new(STDOUT, :debug)
+end
+
+configure :production do
+  DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/recipes.db")
+end
+
+#
+# Model
+#
 
 class Recipe
   include DataMapper::Resource
