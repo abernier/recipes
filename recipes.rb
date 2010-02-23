@@ -25,19 +25,8 @@ class Recipe
   property :id,           Serial
   property :title,        String
   property :slug,         String
-  
-  has n, :authors, :through => Resource, :model => 'User'
 end
 
-class User
-  include DataMapper::Resource
-  
-  property :id,         Serial
-  property :email,      String, :format => :email_address
-  property :name,       String
-  
-  has n, :recipes, :through => Resource, :model => 'Recipe'
-end
 DataMapper.auto_upgrade!
 
 #
