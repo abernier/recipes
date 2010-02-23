@@ -36,7 +36,7 @@ class User
   property :email,      String, :format => :email_address
   property :name,       String
   
-  has n, :recipes, :through => Resource
+  has n, :recipes, :through => Resource, :model => 'Recipe'
 end
 DataMapper.auto_upgrade!
 
