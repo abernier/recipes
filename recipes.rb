@@ -87,7 +87,10 @@ end
 # View
 #
 
+enable :inline_templates
+
 __END__
+
 @@ layout
 %html
   %head
@@ -96,7 +99,7 @@ __END__
     = yield
     %a(href="/") Recipes list
 
-@@form
+@@ form
 %h1 Add a new recipe
 %form(id="add-recipe" action="#{action}" method="POST")
   %label(for="title") Title
@@ -114,14 +117,14 @@ __END__
   %form(action="/#{r.id}/delete" method="POST")
     %input(type="submit" value="Delete")
   
-@@show
+@@ show
 %table
   %tr
     %td Title
     %td= r.title
 %a(href="/#{r.id}/edit") Edit recipe
 
-@@list
+@@ list
 %h1 Recipes
 %a(href="/new") New recipe
 %table
