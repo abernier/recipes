@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'sinatra'
  
-set :env, :production
+set :environment, :development
 disable :run
 
 require 'recipes'
