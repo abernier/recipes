@@ -87,7 +87,7 @@ end
 # View
 #
 
-enable :inline_templates
+use_in_file_templates!
 
 __END__
 
